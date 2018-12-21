@@ -13,15 +13,14 @@ import org.apache.http.HttpResponse;
 public class GetTicketsList {
 	public static void main(String[] args) throws ClientProtocolException,IOException{
 		String auth_token="59550a0e2b1a864a31bef962363e029f";
-		String departmentId="652853630";
-		String include_fields="contacts,products";
+		String orgId="652853630";
 		
-		String apiRequestUrl="https://desk.zoho.com/api/v1/tickets?include="+include_fields;
+		String apiRequestUrl="https://desk.zoho.com/api/v1/tickets";
 		
 		HttpClient httpClient=new DefaultHttpClient();
 		HttpGet request=new HttpGet(apiRequestUrl);
 		request.addHeader("Authorization",auth_token);
-		request.addHeader("orgId",departmentId);
+		request.addHeader("orgId",orgId);
 		HttpResponse response=httpClient.execute(request);
 		BufferedReader reader=new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 		String line="";
